@@ -12,11 +12,14 @@ Built for researchers, data scientists, economists, and journalists working with
 
 > ins-tunisia-mcp is distributed as the `ins-mcp` Python package (the module is run as `python -m ins_mcp`); the project is published by the tanitdata studio.
 
-https://github.com/user-attachments/assets/demo_short.mp4
+**▶ [Watch the demo](Video_Demo/demo_short.mp4)** — asking ins-tunisia-mcp for Tunisian statistics in natural language and getting structured, sourced answers.
 
-<video src="https://github.com/tanitdata/ins-tunisia-mcp/raw/main/Video_Demo/demo_short.mp4" controls width="100%"></video>
+<!-- INLINE PLAYER (optional upgrade): to embed the video as an auto-playing inline player,
+     open a new GitHub issue/PR comment, drag Video_Demo/demo_short.mp4 into it, copy the
+     https://github.com/user-attachments/assets/<uuid> URL GitHub generates, and paste it on
+     its own line right here. That is the only way GitHub serves an inline-playable video;
+     a hand-written URL will 404. -->
 
-*Demo: asking ins-tunisia-mcp for Tunisian statistics in natural language and getting structured, sourced answers.*
 
 ---
 
@@ -41,9 +44,11 @@ python -m venv .venv
 
 On first run the server seeds an on-disk catalogue cache from a single `GetStructure` call (~2–4s). Per-source `has_data` flags then fill in shortly after via a bounded-concurrency background probe — the first tool call is never blocked on probing. Use the `ins_refresh_catalogue` tool to re-pull the catalogue on demand.
 
-### Connect to Claude Desktop
+### Connect your MCP client
 
-Add to your config (`%APPDATA%\Claude\claude_desktop_config.json` on Windows, `~/Library/Application Support/Claude/claude_desktop_config.json` on macOS). See [`claude_desktop_config.example.json`](claude_desktop_config.example.json):
+ins-tunisia-mcp is a standard **stdio** MCP server, so it works with any MCP-compatible client. They all need the same two things — the Python interpreter from your virtualenv and the `-m ins_mcp` arguments. Use the **absolute path** to the venv's Python (`.venv/bin/python` on macOS/Linux, `.venv\Scripts\python.exe` on Windows), and after updating the code, restart the client so it respawns the server.
+
+Most clients share this JSON shape (see [`claude_desktop_config.example.json`](claude_desktop_config.example.json)):
 
 ```json
 {
@@ -56,13 +61,80 @@ Add to your config (`%APPDATA%\Claude\claude_desktop_config.json` on Windows, `~
 }
 ```
 
-After updating the code, restart the server (the client respawns the stdio process — it won't pick up edits otherwise).
+<details>
+<summary><b>Claude Desktop</b></summary>
 
-### Connect to Claude Code
+Edit the config file (create it if absent) and add the block above under `mcpServers`:
+- Windows: `%APPDATA%\Claude\claude_desktop_config.json`
+- macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
+
+Fully quit and reopen Claude Desktop. The `ins` tools appear in the tools menu.
+</details>
+
+<details>
+<summary><b>Claude Code</b></summary>
 
 ```bash
 claude mcp add ins -- /absolute/path/to/ins-tunisia-mcp/.venv/bin/python -m ins_mcp
 ```
+
+Or add the JSON block to `.mcp.json` in your project root.
+</details>
+
+<details>
+<summary><b>Cursor</b></summary>
+
+Create `.cursor/mcp.json` in your project (or `~/.cursor/mcp.json` for global) with the JSON block above. Reload Cursor; enable the server under **Settings → MCP**.
+</details>
+
+<details>
+<summary><b>VS Code (Copilot / Agent mode)</b></summary>
+
+Add to `.vscode/mcp.json` (workspace) or your user `settings.json` under `"mcp"`. VS Code uses a `servers` key:
+
+```json
+{
+  "servers": {
+    "ins": {
+      "type": "stdio",
+      "command": "/absolute/path/to/ins-tunisia-mcp/.venv/bin/python",
+      "args": ["-m", "ins_mcp"]
+    }
+  }
+}
+```
+</details>
+
+<details>
+<summary><b>Cline / Roo Code (VS Code extensions)</b></summary>
+
+Open the extension's **MCP Servers** panel → **Edit / Configure MCP Servers**, and add the JSON block above to `cline_mcp_settings.json`.
+</details>
+
+<details>
+<summary><b>Windsurf</b></summary>
+
+Add the JSON block to `~/.codeium/windsurf/mcp_config.json`, then reload from **Settings → Cascade → MCP servers**.
+</details>
+
+<details>
+<summary><b>Any other MCP client / MCP Inspector</b></summary>
+
+Point it at the stdio command directly:
+
+```bash
+# command:
+/absolute/path/to/ins-tunisia-mcp/.venv/bin/python
+# args:
+-m ins_mcp
+```
+
+To explore the tools interactively without an AI client:
+
+```bash
+npx @modelcontextprotocol/inspector /absolute/path/to/ins-tunisia-mcp/.venv/bin/python -m ins_mcp
+```
+</details>
 
 ### Run unit tests
 

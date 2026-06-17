@@ -3,6 +3,7 @@
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![MCP](https://img.shields.io/badge/MCP-compatible-purple)](https://modelcontextprotocol.io)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20738616.svg)](https://doi.org/10.5281/zenodo.20738616)
 
 An AI-powered [MCP](https://modelcontextprotocol.io) server that turns Tunisia's national statistics portal ([dataportal.ins.tn](http://dataportal.ins.tn)) into a conversational data source. [MCP](https://modelcontextprotocol.io) (Model Context Protocol) lets AI assistants call external tools — connect your AI client and start asking questions in natural language.
 
@@ -222,7 +223,23 @@ Contributions are welcome.
 
 ## Citation
 
-A technical report with a citable DOI is forthcoming; software citation details will be added here once it is archived on Zenodo.
+If you use ins-tunisia-mcp in your work, please cite the technical report archived on Zenodo:
+
+> Gasmi, T. (2026). *ins-tunisia-mcp: An MCP Server for Conversational Access to Tunisia's National Statistics.* Zenodo. https://doi.org/10.5281/zenodo.20738616
+
+```bibtex
+@misc{gasmi2026instunisiamcp,
+  title        = {ins-tunisia-mcp: An MCP Server for Conversational
+                  Access to Tunisia's National Statistics},
+  author       = {Gasmi, Tarek},
+  year         = {2026},
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.20738616},
+  url          = {https://doi.org/10.5281/zenodo.20738616}
+}
+```
+
+The DOI above is the *concept DOI* — it always resolves to the latest version.
 
 ### Data
 

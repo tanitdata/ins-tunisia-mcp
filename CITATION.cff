@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the technical report archived on Zenodo."
+title: "ins-tunisia-mcp: An MCP Server for Conversational Access to Tunisia's National Statistics"
+authors:
+  - family-names: Gasmi
+    given-names: Tarek
+type: software
+year: 2026
+doi: 10.5281/zenodo.20738616
+url: "https://doi.org/10.5281/zenodo.20738616"
+repository-code: "https://github.com/tanitdata/ins-tunisia-mcp"
+license: MIT
+keywords:
+  - Model Context Protocol
+  - MCP
+  - official statistics
+  - open data
+  - Tunisia
+  - INS
+  - Prognoz

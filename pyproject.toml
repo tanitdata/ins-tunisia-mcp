@@ -1,0 +1,27 @@
+[project]
+name = "ins-mcp"
+version = "0.1.0"
+description = "Local-only MCP server wrapping the INS / Prognoz statistical API (dataportal.ins.tn)"
+requires-python = ">=3.10"
+dependencies = [
+    "mcp[cli]>=1.2.0",
+    "httpx>=0.27",
+    "lxml>=5.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+ins-mcp = "ins_mcp.__main__:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["ins_mcp"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["live: hits the real INS endpoint (deselect with -m 'not live')"]

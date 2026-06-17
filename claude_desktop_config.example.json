@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "ins": {
+      "command": "/absolute/path/to/ins-tunisia-mcp/.venv/bin/python",
+      "args": ["-m", "ins_mcp"]
+    }
+  }
+}

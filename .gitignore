@@ -1,0 +1,28 @@
+# Environments / build
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+
+# Generated at runtime (rebuilds itself on first run)
+ins_mcp/cache.db
+
+# Test / tooling caches
+.pytest_cache/
+
+# Local dev-machine config (not product)
+.claude/
+
+# Internal development artifacts — research, milestone notes, QA audits, build spec,
+# raw API captures, and the long demo cut. Kept local, not published.
+scratch/
+qa-reports/
+CLAUDE.md
+ins-mcp-build-spec.md
+M1-prebuild-note.md
+BACKLOG.md
+Structure_response_*.xml
+Video_Demo/deom_long.mp4

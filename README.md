@@ -12,13 +12,9 @@ Built for researchers, data scientists, economists, and journalists working with
 
 > ins-tunisia-mcp is distributed as the `ins-mcp` Python package (the module is run as `python -m ins_mcp`); the project is published by the tanitdata studio.
 
-**▶ [Watch the demo](Video_Demo/demo_short.mp4)** — asking ins-tunisia-mcp for Tunisian statistics in natural language and getting structured, sourced answers.
+https://github.com/user-attachments/assets/3905f814-b6ae-423a-a648-f603ee422c8a
 
-<!-- INLINE PLAYER (optional upgrade): to embed the video as an auto-playing inline player,
-     open a new GitHub issue/PR comment, drag Video_Demo/demo_short.mp4 into it, copy the
-     https://github.com/user-attachments/assets/<uuid> URL GitHub generates, and paste it on
-     its own line right here. That is the only way GitHub serves an inline-playable video;
-     a hand-written URL will 404. -->
+*Demo: asking ins-tunisia-mcp for Tunisian statistics in natural language and getting structured, sourced answers. ([direct link](Video_Demo/demo_short.mp4))*
 
 
 ---
